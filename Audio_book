@@ -1,0 +1,13 @@
+import pyttsx3 
+import PyPDF2
+
+e_book= open('Good.pdf', 'rb')
+pfdReader =PyPDF2.PdfFileReader(e_book)
+pages = pfdReader.numPages
+print(pages)
+book = pyttsx3.init()
+for num0 in range(0,pages):
+    page= pfdReader._get_page(num0)
+    text =page.extract_text()
+    book.say(text)
+    book.runAndWait()
